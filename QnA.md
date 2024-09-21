@@ -151,5 +151,163 @@ FROM Person.Person;
 This counts all rows regardless of the `MiddleName` value.
 
 
+###  6. Formulate a SQL query to retrieve the total number of records present in the Sales.SalesPerson table.
+
+![image](https://github.com/user-attachments/assets/c170517b-ad91-40e7-b370-591e6e991467)
+
+To retrieve the total number of records present in the `Sales.SalesPerson` table, you can use the following SQL query:
+
+```sql
+USE AdventureWorks2019;
+GO
+
+SELECT COUNT(*) AS TotalSalesPersons
+FROM Sales.SalesPerson;
+```
+
+### Explanation:
+1. **`USE AdventureWorks2019;`**:  
+   Sets the context to the `AdventureWorks2019` database.
+
+2. **`SELECT COUNT(*)`**:  
+   Counts all the rows in the `Sales.SalesPerson` table, regardless of the values in the columns.
+
+3. **`AS TotalSalesPersons`**:  
+   Gives the count result a meaningful name, `TotalSalesPersons`.
+
+4. **`FROM Sales.SalesPerson;`**:  
+   Specifies that you are counting rows from the `Sales.SalesPerson` table.
+
+
+   ### 7. Write an SQL query to determine the count of distinct country region codes present in the ‘SalesTerritory’ table.
+
+   ![image](https://github.com/user-attachments/assets/cdb239c7-1133-42ee-8e38-86ab44aab97d)
+
+   To determine the count of distinct `CountryRegionCode` values in the `Sales.SalesTerritory` table, you can use the following SQL query:
+
+```sql
+USE AdventureWorks2019;
+GO
+
+SELECT COUNT(DISTINCT CountryRegionCode) AS DistinctCountryRegionCodes
+FROM Sales.SalesTerritory;
+```
+
+### Explanation:
+1. **`USE AdventureWorks2019;`**:  
+   Sets the context to the `AdventureWorks2019` database.
+
+2. **`SELECT COUNT(DISTINCT CountryRegionCode)`**:  
+   Counts the number of unique (distinct) `CountryRegionCode` values in the `SalesTerritory` table.
+
+3. **`AS DistinctCountryRegionCodes`**:  
+   Assigns a meaningful alias to the result, `DistinctCountryRegionCodes`.
+
+4. **`FROM Sales.SalesTerritory;`**:  
+   Specifies that the data is being retrieved from the `Sales.SalesTerritory` table.
+
+
+### 8. Write an SQL query to determine the count of distinct currency codes present in the ‘CurrencyRate’ table.
+
+![image](https://github.com/user-attachments/assets/f0709ff9-5d94-40af-9a9b-6a052325df90)
+
+To determine the count of distinct currency codes in the `Sales.CurrencyRate` table, you can use the following SQL query:
+
+```sql
+USE AdventureWorks2019;
+GO
+
+SELECT COUNT(DISTINCT ToCurrencyCode) AS DistinctCurrencyCodes
+FROM Sales.CurrencyRate;
+```
+
+### Explanation:
+1. **`USE AdventureWorks2019;`**:  
+   Sets the context to the `AdventureWorks2019` database.
+
+2. **`SELECT COUNT(DISTINCT ToCurrencyCode)`**:  
+   Counts the number of unique (distinct) values in the `ToCurrencyCode` column of the `Sales.CurrencyRate` table.
+
+3. **`AS DistinctCurrencyCodes`**:  
+   Assigns a meaningful alias, `DistinctCurrencyCodes`, to the result.
+
+4. **`FROM Sales.CurrencyRate;`**:  
+   Specifies that the data is being retrieved from the `Sales.CurrencyRate` table. 
+
+If you also want to check distinct values for `FromCurrencyCode`, you can adjust the column name.
+
+
+### 9. Write an SQL query to calculate the count of email addresses that were last modified before December 22, 2008, grouped by the modification date, but only include those modification dates where the count of email addresses is greater than 1.
+
+![image](https://github.com/user-attachments/assets/e81d31e2-f441-4575-9c1d-2cb0fd6cd788)
+
+To calculate the count of email addresses that were last modified before December 22, 2008, and group them by modification date, including only those dates where the count of email addresses is greater than 1, you can use the following SQL query:
+
+```sql
+USE AdventureWorks2019;
+GO
+
+SELECT ModifiedDate, COUNT(EmailAddress) AS EmailCount
+FROM Person.EmailAddress
+WHERE ModifiedDate < '2008-12-22'
+GROUP BY ModifiedDate
+HAVING COUNT(EmailAddress) > 1;
+```
+
+### Explanation:
+1. **`USE AdventureWorks2019;`**:  
+   Sets the context to the `AdventureWorks2019` database.
+
+2. **`SELECT ModifiedDate, COUNT(EmailAddress) AS EmailCount`**:  
+   - Selects the `ModifiedDate` and counts the number of email addresses for each modification date.
+   - `COUNT(EmailAddress)` returns the number of email addresses grouped by modification date.
+
+3. **`FROM Person.EmailAddress`**:  
+   Specifies that data is being retrieved from the `Person.EmailAddress` table.
+
+4. **`WHERE ModifiedDate < '2008-12-22'`**:  
+   Filters records to include only those where the `ModifiedDate` is before December 22, 2008.
+
+5. **`GROUP BY ModifiedDate`**:  
+   Groups the results by `ModifiedDate`.
+
+6. **`HAVING COUNT(EmailAddress) > 1`**:  
+   Filters the results to include only those `ModifiedDate` values where the count of email addresses is greater than 1. This ensures that only dates with more than one email modification are shown.
+
+
+   ### 10. Write an SQL query to calculate the count of sales orders where the CreditCardID is greater than 10000.
+
+![image](https://github.com/user-attachments/assets/f6dae5df-a47e-49e6-9dc8-d3d0a625e9a7)
+
+
+
+To calculate the count of sales orders where the `CreditCardID` is greater than 10,000, you can use the following SQL query:
+
+```sql
+USE AdventureWorks2019;
+GO
+
+SELECT COUNT(*) AS SalesOrderCount
+FROM Sales.SalesOrderHeader
+WHERE CreditCardID > 10000;
+```
+
+### Explanation:
+1. **`USE AdventureWorks2019;`**:  
+   Sets the context to the `AdventureWorks2019` database.
+
+2. **`SELECT COUNT(*)`**:  
+   Counts the total number of sales orders that meet the condition.
+
+3. **`AS SalesOrderCount`**:  
+   Assigns an alias (`SalesOrderCount`) to the result.
+
+4. **`FROM Sales.SalesOrderHeader`**:  
+   Specifies the `Sales.SalesOrderHeader` table as the data source.
+
+5. **`WHERE CreditCardID > 10000`**:  
+   Filters the rows to include only those records where the `CreditCardID` is greater than 10,000.
+
+
 
 
