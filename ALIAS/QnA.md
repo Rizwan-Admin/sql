@@ -48,6 +48,5 @@ FROM Person_Person;
 
 
 10. Write an SQL query to retrieve the BusinessEntityID, EmailAddressID as ‘EmailNumber’, EmailAddress as ‘EmailID’, and ModifiedDate as ‘Date’ from the ‘EmailAddress’ table.
-
-![Uploading image.png…]()
+![Screenshot 2024-09-26 231243](https://github.com/user-attachments/assets/8ce6594c-3499-4ba2-8022-76337ead6367)
 
